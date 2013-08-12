@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ED3478B1-0950-4EA9-8D6F-D1BF5EEDCF62}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ligi.Infrastructure</RootNamespace>
+    <AssemblyName>Ligi.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Itenso.TimePeriod">
+      <HintPath>..\packages\TimePeriodLibrary.NET.1.4.11\lib\sl40\Silverlight.Release\Itenso.TimePeriod.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Client">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Client.1.1.2\lib\net45\Microsoft.AspNet.SignalR.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling">
+      <HintPath>..\packages\EnterpriseLibrary.WindowsAzure.TransientFaultHandling.5.0.1118.2\lib\NET4\Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.TransientFaultHandling.Core">
+      <HintPath>..\packages\TransientFaultHandling.Core.5.0.1118.2\lib\NET35\Microsoft.Practices.TransientFaultHandling.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception">
+      <HintPath>..\packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
+      <HintPath>..\packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.1.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.5.9.10348, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\TimePeriodLibrary.NET.1.4.11\lib\net20\Desktop.Release\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.extensions">
+      <HintPath>..\packages\xunit.extensions.1.9.1\lib\net20\xunit.extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\CollectionExtensions.cs" />
+    <Compile Include="Common\DictionaryExtensions.cs" />
+    <Compile Include="Common\HandleGenerator.cs" />
+    <Compile Include="Common\MaintenanceMode.cs" />
+    <Compile Include="Common\ServiceConfigurationSettingConnectionFactory.cs" />
+    <Compile Include="ConcurrencyException.cs" />
+    <Compile Include="DataAccess\FixtureBookiesDao.cs" />
+    <Compile Include="DataAccess\FixtureRepository.cs" />
+    <Compile Include="DataAccess\LeagueRepository.cs" />
+    <Compile Include="DataAccess\MemoryRepository.cs" />
+    <Compile Include="DataAccess\UnitOfWork.cs" />
+    <Compile Include="DataAccess\AdminUnitOfWork.cs" />
+    <Compile Include="DataAccess\RepositoryBase.cs" />
+    <Compile Include="Database\AdminDbInitializer.cs" />
+    <Compile Include="DataAccess\SeasonRepository.cs" />
+    <Compile Include="DataAccess\TeamRepository.cs" />
+    <Compile Include="Database\AdminDbContext.cs" />
+    <Compile Include="AspnetMembership\AspnetDbInitializer.cs" />
+    <Compile Include="Database\BettingProcessDbContext.cs" />
+    <Compile Include="Database\BetsDbContext.cs" />
+    <Compile Include="Database\IndexDictionaryDbContext.cs" />
+    <Compile Include="Database\SqlDataContext.cs" />
+    <Compile Include="EntityNotFoundException.cs" />
+    <Compile Include="EventSourcing\EventStoreDbContext.cs" />
+    <Compile Include="EventSourcing\SqlEventSourcedRepository.cs" />
+    <Compile Include="ExpressionCombiner.cs" />
+    <Compile Include="MessageLog\MessageLogDbContext.cs" />
+    <Compile Include="MessageLog\MessageLogEntity.cs" />
+    <Compile Include="MessageLog\QueryCriteriaExtensions.cs" />
+    <Compile Include="MessageLog\SqlMessageLog.cs" />
+    <Compile Include="MessageLog\SqlMessageLogHandler.cs" />
+    <Compile Include="Messaging\CommandBus.cs" />
+    <Compile Include="Messaging\EventBus.cs" />
+    <Compile Include="Messaging\Handling\CommandProcessor.cs" />
+    <Compile Include="Messaging\Handling\EventProcessor.cs" />
+    <Compile Include="Messaging\Handling\MessageProcessor.cs" />
+    <Compile Include="Messaging\IMessageReceiver.cs" />
+    <Compile Include="Messaging\IMessageSender.cs" />
+    <Compile Include="Messaging\Implementation\MessageReceiver.cs" />
+    <Compile Include="Messaging\Implementation\MessageSender.cs" />
+    <Compile Include="Messaging\Implementation\MessagingDbInitializer.cs" />
+    <Compile Include="Messaging\Message.cs" />
+    <Compile Include="Messaging\MessageReceivedEventArgs.cs" />
+    <Compile Include="AspnetMembership\Application.cs" />
+    <Compile Include="AspnetMembership\AspnetDbContext.cs" />
+    <Compile Include="AspnetMembership\Mapping\ApplicationMap.cs" />
+    <Compile Include="AspnetMembership\Mapping\MembershipMap.cs" />
+    <Compile Include="AspnetMembership\Mapping\ProfileMap.cs" />
+    <Compile Include="AspnetMembership\Mapping\RoleMap.cs" />
+    <Compile Include="AspnetMembership\Mapping\UserMap.cs" />
+    <Compile Include="AspnetMembership\Mapping\UsersOpenAuthAccountMap.cs" />
+    <Compile Include="AspnetMembership\Mapping\UsersOpenAuthDataMap.cs" />
+    <Compile Include="AspnetMembership\Membership.cs" />
+    <Compile Include="AspnetMembership\Profile.cs" />
+    <Compile Include="AspnetMembership\Role.cs" />
+    <Compile Include="AspnetMembership\User.cs" />
+    <Compile Include="AspnetMembership\UsersOpenAuthAccount.cs" />
+    <Compile Include="AspnetMembership\UsersOpenAuthData.cs" />
+    <Compile Include="Processes\SqlProcessManagerDataContext.cs" />
+    <Compile Include="Processes\UndispatchedMessages.cs" />
+    <Compile Include="Projections\BookieBetsProjection.cs" />
+    <Compile Include="Projections\MonthLeaderBoardProjection.cs" />
+    <Compile Include="Projections\SeasonLeaderBoardProjection.cs" />
+    <Compile Include="Projections\BookieAccountProjection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadModel\Bet.cs" />
+    <Compile Include="ReadModel\Contracts\IBetsDao.cs" />
+    <Compile Include="ReadModel\Contracts\ILeaderBoardDao.cs" />
+    <Compile Include="ReadModel\Contracts\IUserDao.cs" />
+    <Compile Include="ReadModel\Contracts\IWeekAccountDao.cs" />
+    <Compile Include="ReadModel\Contracts\UserDao.cs" />
+    <Compile Include="ReadModel\Impl\BetsDao.cs" />
+    <Compile Include="ReadModel\Impl\LeaderBoardDao.cs" />
+    <Compile Include="ReadModel\Impl\WeekAccountDao.cs" />
+    <Compile Include="ReadModel\LeaderBoard.cs" />
+    <Compile Include="ReadModel\WeekAccount.cs" />
+    <Compile Include="Serialization\ITextSerializer.cs" />
+    <Compile Include="Serialization\JsonTextSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Serialization\TextSerializerExtensions.cs" />
+    <Compile Include="Tasks\TimerTaskFactory.cs" />
+    <Compile Include="Common\CacheAnyEnumerableExtensions.cs" />
+    <Compile Include="Validation\IValidator.cs" />
+    <Compile Include="Validation\SaveLeagueValidator.cs" />
+    <Compile Include="Validation\SaveSeasonValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ligi.Core\Ligi.Core.csproj">
+      <Project>{865A428A-AF59-4CA2-96FB-70FD18288945}</Project>
+      <Name>Ligi.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

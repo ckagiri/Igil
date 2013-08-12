@@ -1,0 +1,84 @@
+﻿<section id="leaderboards-view" class="view">
+    <div class="container">
+        <div class="content">
+            <h3>Week Leaderboard</h3><p />
+            <select class="span3" data-bind="options: wlb.leagues, optionsText: 'name', value: wlb.selectedLeague, optionsCaption: 'Select League'"></select><br/>
+            <select class="span3" data-bind="options: wlb.seasons, optionsText: 'name', value: wlb.selectedSeason, optionsCaption: 'Select Season'"></select><br/>
+            <select class="span2" data-bind="options: wlb.months, optionsText: 'name', value: wlb.selectedMonth, optionsValue: 'key', optionsCaption: 'Select Month'"></select><br/>
+            <select class="span3 text-center" data-bind="options: wlb.weeks, optionsText: 'name', value: wlb.selectedWeek, optionsCaption: 'Select Week'"></select><br/>
+            <div class="row" >
+                <div class="span5">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="span1">#</th>
+                                <th class="span2">User Name</th>
+                                <th class="span1">Profit</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: wlb.weekLeaders">
+                            <tr>
+                                <td data-bind="text: $index() + 1"></td>
+                                <td data-bind="text: userName"></td>
+                                <td data-bind="text: profit"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div><br />
+
+        <div class="content">
+            <h3>Month Leaderboard</h3><p />
+            <select class="span3" data-bind="options: mlb.leagues, optionsText: 'name', value: mlb.selectedLeague, optionsCaption: 'Select League'"></select><br/>
+            <select class="span3" data-bind="options: mlb.seasons, optionsText: 'name', value: mlb.selectedSeason, optionsCaption: 'Select Season'"></select><br/>
+            <select class="span2" data-bind="options: mlb.months, optionsText: 'name', value: mlb.selectedMonth, optionsValue: 'key', optionsCaption: 'Select Month'"></select><br/>
+            <div class="row" >
+                <div class="span5">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="span1">#</th>
+                                <th class="span2">User Name</th>
+                                <th class="span1">Profit</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: mlb.monthLeaders">
+                            <tr>
+                                <td data-bind="text: $index() + 1"></td>
+                                <td data-bind="text: userName"></td>
+                                <td data-bind="text: profit"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div><br />
+        
+        <div class="content">
+            <h3>Season Leaderboard</h3><p />
+            <select class="span3" data-bind="options: slb.leagues, optionsText: 'name', value: slb.selectedLeague, optionsCaption: 'Select League'"></select><br/>
+            <select class="span3" data-bind="options: slb.seasons, optionsText: 'name', value: slb.selectedSeason, optionsCaption: 'Select Season'"></select><br/>
+            <div class="row" >
+                <div class="span5">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="span1">#</th>
+                                <th class="span2">User Name</th>
+                                <th class="span1">Profit</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: slb.seasonLeaders">
+                            <tr>
+                                <td data-bind="text: $index() + 1"></td>
+                                <td data-bind="text: userName"></td>
+                                <td data-bind="text: profit"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><br/><br/>
+</section>

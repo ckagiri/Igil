@@ -1,0 +1,201 @@
+﻿<section id="fixtures-view" class="view">
+    <span data-bind="text: leagueSeason"></span>
+    <!-- ko template: {name: 'weekAccountTmpl'} -->
+    <!-- /ko -->
+    <br/>
+    <!-- ko with: pager -->
+    <!-- ko template: { name: 'pagerTmpl' } -->
+    <!-- /ko -->
+    <!-- /ko -->
+    <br/><br/>
+    <div class="span8">
+        <div data-bind="foreach: fixtures">
+            <!-- ko if: hasHangCheng() && hasTotalGoals() -->
+            <table class="table">
+              <!-- ko template: { name: 'headerTmpl' } --><!-- /ko -->
+                
+                                <tbody class="span8">
+                    <tr class="span8">
+                        <!-- ko foreach: odds -->
+                        <td data-bind="visible: isHomeOdds">
+                            <button class="span3 btn" data-bind="enable: $parent.isActive(), click: $root.betslip.add, tooltip: { title: tip, placement: 'right' }">
+                                <span data-bind="text: oddsDesc"></span>
+                            </button>
+                        </td>
+                        <td data-bind="visible: isOverOdds">
+                            <button class="span3 btn" data-bind="enable: $parent.isActive(), click: $root.betslip.add, tooltip: { title: tip, placement: 'right' }">
+                                <span data-bind="text: oddsDesc"></span>
+                            </button>
+                        </td>
+                        <!-- /ko -->
+                    </tr>
+                    <tr class="span8">
+                        <!-- ko foreach: odds -->
+                        <td data-bind="visible: isAwayOdds">
+                            <button class="span3 btn" data-bind="enable: $parent.isActive(), click: $root.betslip.add, tooltip: { title: tip, placement: 'right' }">
+                                <span data-bind="text: oddsDesc"></span>
+                            </button>
+                        </td>
+                        <td data-bind="visible: isUnderOdds">
+                            <button class="span3 btn" data-bind="enable: $parent.isActive(), click: $root.betslip.add, tooltip: { title: tip, placement: 'right' }">
+                                <span data-bind="text: oddsDesc"></span>
+                            </button>
+                        </td>
+                        <!-- /ko -->
+                    </tr>
+                </tbody>
+            </table>
+            <!-- /ko -->
+            <!-- ko ifnot: hasHangCheng() && hasTotalGoals() -->
+            <!-- ko if: hasHangCheng() -->
+            <table class="table">
+                <!-- ko template: { name: 'headerTmpl' } --><!-- /ko -->
+                <tbody class="span8">
+                    <tr class="span8">
+                        <!-- ko foreach: odds -->
+                        <td data-bind="visible: isHomeOdds">
+                            <button class="span3 btn" data-bind="enable: $parent.isActive(), click: $root.betslip.add, tooltip: { title: tip, placement: 'right' }">
+                                <span data-bind="text: oddsDesc"></span>
+                            </button>
+                        </td>
+                        <td data-bind="visible: isAwayOdds">
+                            <button class="span3 btn" data-bind="enable: $parent.isActive(), click: $root.betslip.add, tooltip: { title: tip, placement: 'right' }">
+                                <span data-bind="text: oddsDesc"></span>
+                            </button>
+                        </td>
+                        <!-- /ko -->
+                    </tr>
+                </tbody>
+            </table>
+            <!-- /ko -->
+            <!-- ko if: hasTotalGoals() -->
+            <table class="table">
+              <!-- ko template: { name: 'headerTmpl' } --><!-- /ko -->
+                <tbody class="span8">
+                    <tr class="span8">
+                        <!-- ko foreach: odds -->
+                        <td data-bind="visible: isOverOdds">
+                            <button class="span3 btn" data-bind="enable: $parent.isActive(), click: $root.betslip.add, tooltip: { title: tip, placement: 'right' }">
+                                <span data-bind="text: oddsDesc"></span>
+                            </button>
+                        </td>
+                        <td data-bind="visible: isUnderOdds">
+                            <button class="span3 btn" data-bind="enable: $parent.isActive(), click: $root.betslip.add, tooltip: { title: tip, placement: 'right' }">
+                                <span data-bind="text: oddsDesc"></span>
+                            </button>
+                        </td>
+                        <!-- /ko -->
+                    </tr>
+                </tbody>
+            </table>
+            <!-- /ko -->
+            <!-- /ko -->
+
+            <!-- ko ifnot: hasHangCheng() -->
+            <!-- ko ifnot: hasTotalGoals() -->
+            <table class="table">
+              <!-- ko template: { name: 'headerTmpl' } --><!-- /ko -->
+                <tbody class="span8"><tr class="span8"><tr></tbody>
+            </table>
+            <!-- /ko -->
+            <!-- /ko -->
+        </div>
+        <!-- ko ifnot: fixtures().length -->
+           <strong><span class="text-success" data-bind="text: message"></span></strong>
+        <!-- /ko -->
+    </div>
+
+    <div class="span4 well ">
+        <span>Betslip</span>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Match</th>
+                    <th>Pick</th>
+                    <th>Stake</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: betslip.items">
+                <tr>
+                    <td data-bind="text: $index() + 1"></td>
+                    <td data-bind="text: matchDescShort"></td>
+                    <td data-bind="text: pickDesc"></td>
+                    <td><input class="input-mini" type="text" data-bind="value: wager"></td>
+                    <td>
+                        <button class="btn btn-mini" type="button" data-bind='click: $parent.betslip.remove'>Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <tr class="success">
+                <td colspan="2">
+                    Total Stake: <span data-bind='text: betslip.totalStake()'> </span>
+                </td>
+            </tr>
+            <tr class="success">
+                <td>
+                    Potential Payout: <span data-bind='text: betslip.maxPayout()'> </span>
+                </td>
+                <td>
+                    <button class="btn btn-small pull-right" type="button" data-bind='command: submitBetslipCmd, activity: submitBetslipCmd.isExecuting'>Submit</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/html" id="weekAccountTmpl">
+        <table data-bind="with: weekaccount">
+            <tr class="span8">
+                <td class="span4 text-right ">Credit: &nbsp;</td>
+                <td class="span4"><span data-bind="text: credit"></span>&nbsp; coins</td>
+            </tr>
+            <tr class="span8">
+                <td class="span4 text-right">Balance: &nbsp;</td>
+                <td class="span4"><span data-bind="text: balance"></span>&nbsp; coins</td>
+            </tr>
+            <tr class="span8">
+                <td class="span4 text-right"><strong>Available: &nbsp;</strong></td>
+                <td class="span4"><strong><span data-bind="text: available"></span>&nbsp; coins</strong></td>
+            </tr>
+        </table>
+    </script>
+    <script type="text/html" id="pagerTmpl">
+        <table class="span8">
+            <tr>
+                <td class="span3 text-right">
+                    <!-- ko if: pageIndex() > 0 -->
+                    <a href="#" class="btn" data-bind="click: previousPage">Prev</a>
+                    <!-- /ko -->
+                    <!-- ko ifnot: pageIndex() > 0 -->
+                    <a class="btn disabled">Prev</a>
+                    <!-- /ko -->
+                </td>
+                <td class="span3 text-center" data-bind="with: page">
+                    <span data-bind="text: title"></span>
+                </td>
+                <td class="span3">
+                    <!-- ko if: pageIndex() < maxPageIndex() -->
+                    <a href="#" class="btn" data-bind="click: nextPage">Next</a> 
+                    <!-- /ko -->
+                    <!-- ko ifnot: pageIndex() < maxPageIndex() -->
+                    <a class="btn disabled">Next</a> 
+                    <!-- /ko -->
+
+                </td>
+            </tr>
+        </table>
+    </script>
+    <script type="text/html" id="headerTmpl">
+        <thead class="span8">
+            <tr>
+                <td>
+                    <span data-bind="text: kickOffShort"></span>,
+                    <span data-bind="text: match"></span>,
+                    <span data-bind="text: venue"></span>
+                </td>
+            </tr>
+        </thead>
+    </script>
+</section>

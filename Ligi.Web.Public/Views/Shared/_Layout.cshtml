@@ -1,0 +1,45 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ligi Admin</title>
+    <meta charset="utf-8" />
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width">
+    @Styles.Render("~/Content/css")
+    @RenderSection("head", required: false)
+    <script>
+        // Must be first. IE10 mobile viewport fix
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement("style");
+            var mq = "@@-ms-viewport{width:auto!important}";
+            msViewportStyle.appendChild(document.createTextNode(mq));
+            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+    </script>
+    <!-- All JavaScript at the bottom, except this Modernizr build.
+        Modernizr enables HTML5 elements & feature detects for optimal performance.
+        Create your own custom Modernizr build: www.modernizr.com/download/ -->
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+    <body>
+        <div class="container-fluid">
+                @if (User.Identity.IsAuthenticated)
+                { 
+                    <div class="pull-right">
+                        @using (Html.BeginForm("LogOff", "account"))
+                        {
+                            @Html.AntiForgeryToken()
+                            <text>Logged in as &nbsp;</text>@User.Identity.Name<text>&nbsp;</text>
+                            <input class="btn" type="submit" value="Sign Out" />
+                        }
+                    </div>
+                }
+                @RenderBody()
+    </div>
+        
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
+

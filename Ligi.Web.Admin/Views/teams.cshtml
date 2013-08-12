@@ -1,0 +1,52 @@
+﻿<section id="teams-view" class="view">
+    <div class="container">
+        <div class="content">
+            <h3>Teams</h3>
+            <input class="span3 text-left" data-bind="value: teamFilter.searchText, valueUpdate: 'afterkeydown', escape: clearFilter"
+                   placeholder="filter by name, code, tag, or grounds" type="text" />  
+            <div class="row">
+                <div class="span8">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="span1">#</th>
+                                <th class="span4">Name</th>
+                                <th class="span3">Code</th>
+                                <th class="span4">Home Ground</th>
+                                <th class="span2">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- ko template: {name: 'team.view', foreach: teams} -->
+                            <!-- /ko -->
+                            <tr>
+                                <td colspan="5">
+                                    <a class="btn btn-mini" data-bind="click: addTeam">Add</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- ko ifnot:pager().TotalItemCount() > 0 -->
+                    <p>No results found</p>
+                    <!-- /ko -->
+                    <!-- ko if:pager().TotalItemCount() > 0 -->
+                    <div class="pagination pagination-centered" data-bind="template: { name: 'pager.view', data: pager }">
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="team.view" type="text/html">
+        <tr>
+            <td><span data-bind="text: $parent.pager().FirstItemIndex() + $index()"></span></td>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: code"></td>
+            <td data-bind="text: homeGround"></td>
+            <td>
+                <a class="btn btn-mini editTeam">Edit</a>
+                &nbsp;<a class="btn btn-mini btn-danger" data-bind="click: $parent.deleteTeam">Delete</a>
+            </td>
+        </tr>
+    </script>
+</section>

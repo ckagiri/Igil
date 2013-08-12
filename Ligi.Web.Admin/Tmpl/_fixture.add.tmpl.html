@@ -1,0 +1,18 @@
+﻿<label>League </label>
+<select class="span3" data-bind="options: leagues, optionsText: 'name', value: selectedLeague, optionsCaption: 'Select League'"></select><br/>
+<!-- ko with: seasons -->
+<label>Season </label>
+<select class="span3" data-bind="options: seasons, optionsText: 'name', value: $root.selectedSeason, optionsCaption: 'Select Season'"></select>
+<!-- /ko --><br/>
+<label>Kick Off </label>
+<input type="text" class="input-large" data-bind="datetimepicker: kickOffBind, datetimepickerOptions: { autoclose: 1 }"/>
+<label>Home Team</label>
+<!-- ko with: seasonTeams -->
+<select class="span3" data-bind="options: seasonTeams, optionsText: 'name', value: $root.selectedHomeTeam, optionsCaption: 'Select Home Team'"></select>
+<!-- /ko --><br/>
+<label>Away Team</label>
+<!-- ko with: seasonTeams -->
+<select class="span3" data-bind="options: seasonTeams, optionsText: 'name', value: $root.selectedAwayTeam, optionsCaption: 'Select Away Team'"></select>
+<!-- /ko --><br/>
+<label>Venue</label>
+<input type="text" class="input-large" data-bind="value: venue"/>

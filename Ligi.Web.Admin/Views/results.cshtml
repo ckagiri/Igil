@@ -1,0 +1,53 @@
+﻿<section id="results-view" class="view">
+    <div class="container">
+        <div class="content">
+            <h3>Results</h3>
+            <select class="span3" data-bind="options: leagues, optionsText: 'name', value: selectedLeague, optionsCaption: 'Select League'"></select><br/>
+            <!-- ko with: seasons -->
+            <select class="span3" data-bind="options: seasons, optionsText: 'name', value: $root.selectedSeason, optionsCaption: 'Select Season'"></select>
+            <!-- /ko --><br/>
+            <select>
+                <option>Select Month</option>
+                <option>January</option>
+                <option>February</option>
+            </select>
+            <div class="row">
+                <div class="span9">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="span1">#</th>
+                                <th class="span3">Kick off</th>
+                                <th class="span5">Match</th>
+                                <th class="span3">Score</th>
+                                <th class="span2">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- ko template: {name: 'result.view', foreach: fixtures}-->
+                            <!-- /ko -->
+                        </tbody>
+                    </table>
+                    <!-- ko ifnot:pager().TotalItemCount() > 0 -->
+                    <p>No results found</p>
+                    <!-- /ko -->
+                    <!-- ko if:pager().TotalItemCount() > 0 -->
+                    <div class="pagination pagination-centered" data-bind="template: { name: 'pager.view', data: pager }">
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="result.view" type="text/html">
+        <tr>
+            <td><span data-bind="text: $parent.pager().FirstItemIndex() + $index()"></span></td>
+            <td data-bind="text: kickOffMidi"></td>
+            <td data-bind="text: match"></td>
+            <td data-bind="text: score"></td>
+            <td>
+                <a class="btn btn-mini editResult">Edit</a>
+            </td>
+        </tr>
+    </script>
+</section>

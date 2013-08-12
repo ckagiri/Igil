@@ -1,0 +1,12 @@
+﻿<div data-bind="with: fixture">
+    <label>League Season</label>
+    <input class="input-xlarge uneditable-input" readonly="readonly" data-bind="value: leagueSeason"/>
+    <label>Kick off</label>
+    <input type="text" class="input-large" data-bind="datetimepicker: kickOffBind, datetimepickerOptions: { autoclose: 1 }"/>
+    <label>Home Team</label>
+    <input class="input-large uneditable-input" readonly="readonly" data-bind="value: homeTeam().name"/>
+    <label>Away Team</label>
+    <input class="input-large uneditable-input" readonly="readonly" data-bind="value: awayTeam().name"/>
+    <label>Venue</label>
+    <input type="text" class="input-large" data-bind="value: venue"/>
+</div>

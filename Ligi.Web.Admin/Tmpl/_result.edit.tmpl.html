@@ -1,0 +1,12 @@
+﻿<div data-bind="with: fixture">
+    <label>League</label>
+    <input class="input-xlarge uneditable-input" data-bind="value: leagueSeason"/>
+    <label>Kick Off</label>
+    <input class="input-medium uneditable-input" data-bind="value: kickOffShort"/>
+    <label data-bind="text: homeTeam().name"/>
+    <input type="text" class="input-mini" data-bind="value: homeScoreBind"/>
+    <label data-bind="text: awayTeam().name"/>
+    <input type="text" class="input-mini" data-bind="value: awayScoreBind"/>
+    <label>MatchStatus</label>
+    <select class="span2" data-bind="options: matchStatuses, optionsText: 'name', value: matchStatus, optionsValue: 'key'"></select><br/>
+</div>

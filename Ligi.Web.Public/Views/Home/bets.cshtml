@@ -1,0 +1,77 @@
+﻿<section id="bets-view" class="view">
+    <span data-bind="text: leagueSeason"></span><br/><p/><p/><p/>
+    <!-- ko template: {name: 'betsWeekAccountTmpl'} -->
+    <!-- /ko -->
+    <br/>
+    <!-- ko with: pager -->
+    <!-- ko template: { name: 'betsPagerTmpl' } -->
+    <!-- /ko -->
+    <!-- /ko -->
+    <br/><br/>
+    <section class="view-list" data-bind="foreach: bets">
+        <div class="container">
+            <article class="article-left-content">
+                Match-Day: <span data-bind="text: fixture().kickOffShortDate"></span><br/>
+                <small>Fixture: <span data-bind="text: fixture().match"></span></small><br/>
+                <small>Pick: <span data-bind="text: pickDesc"></span></small><br/>
+                <small>Stake: <span data-bind="text: stake"></span> coins</small><br/>
+                <small>Payout: <span data-bind="text: payout"></span></small><br/>
+                <small>Profit: <span data-bind="text: profit"></span></small><br/>
+                <small>time-placed: <span data-bind="text: timeStampFull"></span></small><br/>
+                <small>Bet Result: <span data-bind="text: betResultDesc"></span></small>
+            </article>
+            <br/>
+        </div>
+    </section>
+    <!-- ko ifnot: bets().length -->
+    <strong><span class="text-success" data-bind="text: message"></span></strong>
+    <!-- /ko -->
+    <script type="text/html" id="betsWeekAccountTmpl">
+        <table data-bind="with: weekaccount">
+            <tr class="span7">
+                <td class="span2 text-right ">Total Stake: &nbsp;</td>
+                <td class="span2"><span data-bind="text: totalStake"></span>&nbsp; coins</td>
+                <td class="span2 text-right ">Credit: &nbsp;</td>
+                <td class="span2"><span data-bind="text: credit"></span>&nbsp; coins</td>
+            </tr>
+            <tr class="span7">
+                <td class="span2 text-right">Total Payout: &nbsp;</td>
+                <td class="span2"><span data-bind="text: totalPayout"></span>&nbsp; coins</td>
+                <td class="span2 text-right">Balance: &nbsp;</td>
+                <td class="span2"><span data-bind="text: balance"></span>&nbsp; coins</td>
+            </tr>
+            <tr class="span7">
+                <td class="span2 text-right"><strong>Profit: &nbsp;</strong></td>
+                <td class="span2"><strong><span data-bind="text: profit"></span>&nbsp; coins</strong></td>
+                <td class="span2 text-right"><strong>Available: &nbsp;</strong></td>
+                <td class="span2"><strong><span data-bind="text: available"></span>&nbsp; coins</strong></td>
+            </tr>
+        </table>
+    </script>
+    <script type="text/html" id="betsPagerTmpl">
+        <table class="span7">
+            <tr>
+                <td class="span3 text-right">
+                    <!-- ko if: pageIndex() > 0 -->
+                    <a href="#" class="btn" data-bind="click: previousPage">Prev</a>
+                    <!-- /ko -->
+                    <!-- ko ifnot: pageIndex() > 0 -->
+                    <a class="btn disabled">Prev</a>
+                    <!-- /ko -->
+                </td>
+                <td class="span3 text-center" data-bind="with: page">
+                    <span data-bind="text: title"></span>
+                </td>
+                <td class="span3">
+                    <!-- ko if: pageIndex() < maxPageIndex() -->
+                    <a href="#" class="btn" data-bind="click: nextPage">Next</a> 
+                    <!-- /ko -->
+                    <!-- ko ifnot: pageIndex() < maxPageIndex() -->
+                    <a class="btn disabled">Next</a> 
+                    <!-- /ko -->
+
+                </td>
+            </tr>
+        </table>
+    </script>
+</section>

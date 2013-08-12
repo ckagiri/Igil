@@ -1,0 +1,17 @@
+﻿<section id="fixture-view" class="view">
+    <div class="container" >
+        <div class="button-bar">
+            <button class="btn btn-small" data-bind="command: goBackCmd">
+                <i class="icon-hand-left"></i> Back
+            </button>
+            <button class="btn btn-small" data-bind="command: cancelCmd, activity: cancelCmd.isExecuting">
+                <i class="icon-undo"></i> Cancel
+            </button>
+            <button class="btn btn-small" data-bind="command: saveCmd, activity: saveCmd.isExecuting">
+                <i class="icon-save"></i> Save
+            </button>
+        </div>
+        <p/>
+        <div data-bind="template: { name: fixtureTemplate }"></div>
+    </div>
+</section>

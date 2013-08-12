@@ -1,0 +1,53 @@
+﻿<section id="fixtures-view" class="view">
+    <div class="container">
+        <div class="content">
+            <h3>Fixtures</h3>
+            <select id="leagues" class="span3" data-bind="options: leagues, optionsText: 'name', value: fixtureFilter.league, optionsCaption: 'Select League'"></select><br/>
+            <select id="seasons" class="span3" data-bind="options: seasons, optionsText: 'name', value: fixtureFilter.season, optionsCaption: 'Select Season'"></select><br/>
+            <select class="span2" data-bind="options: months, optionsText: 'name', value: fixtureFilter.month, optionsValue: 'key', optionsCaption: 'Select Month'"></select><br/>
+            <div class="row">
+                <div class="span9">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="span1">#</th>
+                                <th class="span3">Kick off</th>
+                                <th class="span5">Match</th>
+                                <th class="span3">Venue</th>
+                                <th class="span2">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- ko template: {name: 'fixture.view', foreach: fixtures} -->
+                            <!-- /ko -->
+                            <tr>
+                                <td colspan="5">
+                                    <a class="btn btn-mini" data-bind="click: addFixture">Add</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- ko ifnot:pager().TotalItemCount() > 0 -->
+                    <p>No results found</p>
+                    <!-- /ko -->
+                    <!-- ko if:pager().TotalItemCount() > 0 -->
+                    <div class="pagination pagination-centered" data-bind="template: { name: 'pager.view', data: pager }">
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="fixture.view" type="text/html">
+        <tr>
+            <td><span data-bind="text: $parent.pager().FirstItemIndex() + $index()"></span></td>
+            <td data-bind="text: kickOffMidi"></td>
+            <td data-bind="text: match"></td>
+            <td data-bind="text: venue"></td>
+            <td>
+                <a class="btn btn-mini editFixture">Edit</a>
+                &nbsp;<a class="btn btn-mini btn-danger" data-bind="click: $parent.deleteFixture">Delete</a>
+            </td>
+        </tr>
+    </script>
+</section>

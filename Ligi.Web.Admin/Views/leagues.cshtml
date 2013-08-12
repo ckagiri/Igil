@@ -1,0 +1,146 @@
+﻿<section id="leagues-view" class="view">
+    <div class="container">
+        <div class="content">
+            <h3>Leagues</h3>
+            <div class="row">
+                <div class="span8">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="span1">#</th>
+                                <th class="span4">Name</th>
+                                <th class="span3">Code</th>
+                                <th class="span2">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="template: { name: leagueTemplate, foreach: leagues }">
+                            <tr>
+                                <td colspan="5">
+                                    <a class="btn btn-mini">Add</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <h3>Seasons</h3><p />
+            <select class="span3" data-bind="options: leagues, optionsText: 'name', value: selectedLeague, optionsCaption: 'Select League'"></select><p/>
+            <div class="row" >
+                <div class="span8">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="span1">#</th>
+                                <th class="span3">Name</th>
+                                <th class="span2">From</th>
+                                <th class="span2">To</th>
+                                <th class="span2">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- ko with: seasons -->
+                            <!-- ko template: { name: $root.seasonTemplate, foreach: seasons } -->
+                            <!-- /ko -->
+                            <tr>
+                                <td colspan="5"><a data-bind="css: { disabled: !$root.selectedLeague() }" class="btn btn-mini">Add</a></td>
+                            </tr>
+                            <!-- /ko -->
+                        </tbody>
+                    </table>
+                    <!-- ko with: seasons -->
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <h3>Season Teams</h3><p />
+            <select class="span3" data-bind="options: leagues, optionsText: 'name', value: selectedLeague, optionsCaption: 'Select League'"></select>&nbsp;
+            <!-- ko with: seasons -->
+            <select class="span3" data-bind="options: seasons, optionsText: 'name', value: $root.selectedSeason, optionsCaption: 'Select Season'"></select>
+            <!-- /ko -->
+            <div class="row" >
+                <div class="span8">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="span1">#</th>
+                                <th class="span3">Name</th>
+                                <th class="span4">Code</th>
+                                <th class="span2">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- ko with: seasonTeams -->
+                            <!-- ko template: { name: $root.seasonTeamsTemplate, foreach: seasonTeams } -->
+                            <!-- /ko -->
+                            <tr>
+                                <td colspan="5"><a data-bind="css: { disabled: !$root.selectedSeason() }" class="btn btn-mini">Add</a></td>
+                            </tr>
+                            <!-- /ko -->
+                        </tbody> 
+                    </table>
+                    <!-- ko with: seasonTeams -->
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="league.view" type="text/html">
+        <tr>
+            <td data-bind="text: $index() + 1"></td>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: code"></td>
+            <td>
+                <a class="btn btn-mini" data-bind="click: $root.editLeague">Edit</a>
+                <!--&nbsp;--><a class="btn btn-mini btn-danger">Delete</a>
+            </td>
+        </tr>
+    </script>
+    <script id="league.edit" type="text/html">
+        <tr data-bind="with: $root.itemForEditing" >
+            <td data-bind="text: $index() + 1"></td>
+            <td><input type="text" data-bind="value: name, hasfocus: $root.leagueNameFocused"/></td>
+            <td><input type="text" data-bind="value: code"/></td>
+            <td>
+                <a class="btn btn-mini" data-bind="click: $root.acceptLeagueChanges">Save</a>
+                <!--&nbsp;--><a class="btn btn-mini" data-bind="click: $root.cancelLeagueChanges">Cancel</a>
+            </td>
+        </tr>
+    </script>
+    <script id="season.view" type="text/html">
+        <tr>
+            <td data-bind="text: $index() + 1"></td>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: startDateShort"></td>
+            <td data-bind="text: endDateShort"></td>
+            <td>
+                <a class="btn btn-mini" data-bind="click: $root.editSeason">Edit</a>
+                &nbsp;<a class="btn btn-mini btn-danger">Delete</a>
+            </td>
+        </tr>
+    </script>
+    <script id="season.edit" type="text/html">
+        <tr>
+            <td data-bind="text: $index() + 1"></td>
+            <td><input type="text" class="input-medium" data-bind="value: name"></td>
+            <td><input type="text" class="input-medium" data-bind="value: startDateShort"></td>
+            <td><input type="text" class="input-medium" data-bind="value: endDateShort"></td>
+            <td>
+                <a class="btn btn-mini" data-bind="click: $root.save">Save</a>
+                &nbsp;<a class="btn btn-mini" data-bind="click: $root.cancel">Cancel</a>
+            </td>
+        </tr>
+    </script>
+    <script id="seasonteam.view" type="text/html">
+        <tr>
+            <td data-bind="text: $index() + 1"></td>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: code"></td>
+            <td>
+                <a class="btn btn-mini btn-danger">Remove</a>
+            </td>
+        </tr>
+    </script>
+</section>
