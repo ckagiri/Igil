@@ -192,10 +192,9 @@ namespace Ligi.Core.Model
             var seasonAccount = _seasonAccounts.First(n => n.SeasonId == seasonId);
             seasonAccount.TotalStake = e.SeasonAccount.TotalStake;
             seasonAccount.TotalPayout = e.SeasonAccount.TotalPayout;
-            seasonAccount.Profit = e.SeasonAccount.Profit;
-            seasonAccount.LatestBetTimeStamp = e.SeasonAccount.LatestBetTimeStamp;
             seasonAccount.BetsPlaced = e.SeasonAccount.BetsPlaced;
             seasonAccount.BetsSettled = e.SeasonAccount.BetsSettled;
+            seasonAccount.LatestBetTimeStamp = e.SeasonAccount.LatestBetTimeStamp;
         }
 
         private void OnMonthAccountUpdated(MonthAccountUpdated e)
