@@ -11,7 +11,6 @@
     <div id="main-region" class="container">
         <p>Here is static content in the web page. You'll notice that it gets replaced by our app as soon as we start it.</p>
     </div>
-    <div id="dialog-region"></div>
     <div id="footer-region"></div>
     
     <script type="text/template" id="header-template">
@@ -26,7 +25,7 @@
     </script>
     
     <script type="text/template" id="header-link">
-        <a href="#<%= url %>"><%= name %></a>
+        @*<a href="#<%= url %>"><%= name %></a>*@
     </script>
     
     <script type="text/template" id ="team-list-item">
@@ -48,17 +47,12 @@
     
     <script type="text/template" id="team-list-layout">
         <div id="panel-region"></div>
+        <div id="new-region"></div>
         <div id="teams-region"></div>
     </script>
     
     <script type="text/template" id="team-list-panel">
-        <button class="btn btn-primary js-new">New team</button>
-        <form class="form-search form-inline pull-right">
-            <div class="input-append">
-                <input type="text" class="span2 search-query js-filter-criterion"/>
-                <button type="submit" class="btn js-filter">Filter Teams</button>
-            </div>
-        </form>
+        <button class="btn btn-primary js-new">Add team</button><p />
     </script>
     
     <script type="text/template" id ="team-list">
@@ -111,11 +105,22 @@
         </form>
     </script>
     
+    <script type="text/template" id="team-new"> 
+        <form>
+            <div class="control-group">
+                <label for="team-name" class="control-label">Name: </label>
+                <input name="name" type="text" />
+            </div>
+            <button class="btn js-submit">Save</button>
+            <button class="btn js-cancel">Cancel</button>
+        </form>
+    </script>
+    
     <script type="text/template" id="about-message">
         <h1>About</h1>
         <p>Nialine Production</p>
     </script>
-    
+
     <script src="~/Assets/js/vendor/jquery.js"></script>
     <script src="~/Assets/js/vendor/jquery-ui-1.10.3.js"></script>
     <script src="~/Assets/js/vendor/json2.js"></script>
@@ -125,31 +130,27 @@
     <script src="~/Assets/js/vendor/backbone.syphon.js"></script>
     <script src="~/Assets/js/vendor/backbone.localstorage.js"></script>
     <script src="~/Assets/js/vendor/backbone.marionette.js"></script>
-    <script src="~/Assets/js/apps/config/marionette/application.js"></script>
     <script src="~/Assets/js/vendor/spin.js"></script>
     <script src="~/Assets/js/vendor/spin.jquery.js"></script>
-    <script src="~/Assets/js/apps/config/marionette/regions/dialog.js"></script>
-    <script src="~/Assets/js/app.js"></script>
-    <script src="~/Assets/js/common/views.js"></script>
-    <script src="~/Assets/js/apps/config/storage/localstorage.js"></script>
-    <script src="~/Assets/js/entities/common.js"></script>
-    <script src="~/Assets/js/entities/header.js"></script>
+    <script src="~/Assets2/js/ligiadmin/app.js"></script>
+    <script src="~/Assets2/js/ligiadmin/config/marionette/application.js"></script>
+    <script src="~/Assets2/js/ligiadmin/config/javascript.js"></script>
+    <script src="~/Assets2/js/ligiadmin/entities/_base/model.js"></script>
+    <script src="~/Assets2/js/ligiadmin/entities/_base/collections.js"></script>
+    <script src="~/Assets2/js/ligiadmin/views/_base/view.js"></script>
+    <script src="~/Assets2/js/ligiadmin/views/_base/collectionview.js"></script>
+    <script src="~/Assets2/js/ligiadmin/views/_base/compositeview.js"></script>
+    <script src="~/Assets2/js/ligiadmin/views/_base/itemview.js"></script>
+    <script src="~/Assets2/js/ligiadmin/views/_base/layout.js"></script>
+    <script src="~/Assets2/js/ligiadmin/apps/header/header_app.js"></script>
+    <script src="~/Assets2/js/ligiadmin/apps/header/list/list_controller.js"></script>
+    <script src="~/Assets2/js/ligiadmin/apps/header/list/list_view.js"></script>
+    <script src="~/Assets2/js/ligiadmin/apps/teams/teams_app.js"></script>
+    <script src="~/Assets2/js/ligiadmin/apps/teams/new/new_controller.js"></script>
+    <script src="~/Assets2/js/ligiadmin/apps/teams/new/new_view.js"></script>
+    <script src="~/Assets2/js/ligiadmin/apps/teams/list/list_controller.js"></script>
+    <script src="~/Assets2/js/ligiadmin/apps/teams/list/list_view.js"></script>
     <script src="~/Assets/js/entities/team.js"></script>
-    <script src="~/Assets/js/apps/teams/teams_app.js"></script>
-    <script src="~/Assets/js/apps/teams/common/views.js"></script>
-    <script src="~/Assets/js/apps/teams/list/list_view.js"></script>
-    <script src="~/Assets/js/apps/teams/list/list_controller.js"></script>
-    <script src="~/Assets/js/apps/teams/show/show_view.js"></script>
-    <script src="~/Assets/js/apps/teams/show/show_controller.js"></script>
-    <script src="~/Assets/js/apps/teams/edit/edit_view.js"></script>
-    <script src="~/Assets/js/apps/teams/edit/edit_controller.js"></script>
-    <script src="~/Assets/js/apps/teams/new/new_view.js"></script>
-    <script src="~/Assets/js/apps/about/about_app.js"></script>
-    <script src="~/Assets/js/apps/about/show/show_view.js"></script>
-    <script src="~/Assets/js/apps/about/show/show_controller.js"></script>
-    <script src="~/Assets/js/apps/header/header_app.js"></script>
-    <script src="~/Assets/js/apps/header/list/list_view.js"></script>
-    <script src="~/Assets/js/apps/header/list/list_controller.js"></script>
     <script type="text/javascript">
         LigiAdmin.start();
     </script>

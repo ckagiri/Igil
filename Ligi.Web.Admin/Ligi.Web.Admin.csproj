@@ -161,6 +161,7 @@
     <Content Include="Assets\js\apps\about\about_app.js" />
     <Content Include="Assets\js\apps\about\show\show_controller.js" />
     <Content Include="Assets\js\apps\about\show\show_view.js" />
+    <Content Include="Assets\js\apps\config\marionette\application.js" />
     <Content Include="Assets\js\apps\config\marionette\regions\dialog.js" />
     <Content Include="Assets\js\apps\config\storage\localstorage.js" />
     <Content Include="Assets\js\apps\header\header_app.js" />
@@ -247,6 +248,7 @@
       <DependentUpon>bootstrap-datetimepicker.js</DependentUpon>
     </Content>
     <Content Include="Home.cshtml" />
+    <Content Include="Home2.cshtml" />
     <None Include="Index.cshtml" />
     <Content Include="Content\css\site.js" />
     <Content Include="Content\css\site.min.js" />
@@ -441,6 +443,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\Mvc\" />
+    <Folder Include="Javascripts\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

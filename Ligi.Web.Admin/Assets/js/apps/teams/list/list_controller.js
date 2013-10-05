@@ -20,7 +20,7 @@
                                 || team.get('stadium').toLowerCase().indexOf(criterion) !== -1) {
                                 return team;
                             }
-                            // return undefined;
+                            return undefined;
                         };
                     }
                 });
@@ -54,9 +54,9 @@
                     });
 
                     view.on("form:submit", function (data) {
-                        var highest = teams.max(function (x) { return x.id; });
-                        var highestId = highest.get('id');
-                        data.id = highestId + 1;
+                        //var highest = teams.max(function (x) { return x.id; });
+                        //var highestId = highest.get('id');
+                        //data.id = highestId + 1;
                         if(newTeam.save(data)) {
                             teams.add(newTeam);
                             view.trigger("dialog:close");

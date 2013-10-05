@@ -1,11 +1,11 @@
 ﻿LigiAdmin.module('Entities', function(Entities, LigiAdmin, Backbone, Marionette, $, _) {
     Entities.Team = Backbone.Model.extend({
-        urlRoot: "teams",
+        urlRoot: "/api/teams",
         
         defaults: {
             name: '',
             code: '',
-            stadium: ''
+            homeGround: ''
         },
         
         validate: function (attrs, option) {
@@ -27,21 +27,21 @@
         }
     });
     
-    Entities.configureStorage(Entities.Team);
+    //Entities.configureStorage(Entities.Team);
     
     Entities.TeamCollection = Backbone.Collection.extend({
-        url: "teams",
+        url: "/api/teams",
         model: Entities.Team,
         comparator: "name"
     });
     
-    Entities.configureStorage(Entities.TeamCollection);
+    //Entities.configureStorage(Entities.TeamCollection);
 
     var initializeTeams = function() {
         var teams = new Entities.TeamCollection([
-            {id: 1, name: 'Chelsea', code: 'CHE', stadium: 'Stamford Bridge'},
-            {id: 2, name: 'Manchester United', code: 'MANU', stadium: 'Old Trafford'},
-            {id: 3, name: 'Manchester City', code: 'MANC', stadium: 'Etihad Stadium' }
+            { id: 1, name: 'Chelsea', code: 'CHE', homeGround: 'Stamford Bridge' },
+            { id: 2, name: 'Manchester United', code: 'MANU', homeGround: 'Old Trafford' },
+            { id: 3, name: 'Manchester City', code: 'MANC', homeGround: 'Etihad Stadium' }
         ]);
         teams.forEach(function(team) {
             team.save();
