@@ -31,9 +31,6 @@
     <script type="text/template" id ="team-list-item">
         <td><%= name %></td><td><%= code %></td>
         <td>
-            <a href="#teams/<%= id %>" class="btn btn-small js-show">
-                Show
-            </a>
             <a href="#teams/<%= id %>/edit" class="btn btn-small js-edit">
                 <i class="icon-pencil"></i>
                 Edit
@@ -52,7 +49,7 @@
     </script>
     
     <script type="text/template" id="team-list-panel">
-        <button class="btn btn-primary js-new">Add team</button><p />
+        <button class="btn btn-primary js-new-team">Add team</button><p />
     </script>
     
     <script type="text/template" id ="team-list">
@@ -88,32 +85,50 @@
     </script>
     
     <script type="text/template" id="team-form"> 
-        <form>
-            <div class="control-group">
-                <label for="team-name" class="control-label">Name: </label>
-                <input id="team-name" name="name" type="text" value="<%= name %>"/>
-            </div>
-            <div class="control-group">
-                <label for="team-code" class="control-label">Code: </label>
-                <input id="team-code" name="code" type="text" value="<%= code %>" />
-            </div>
-            <div class="control-group">
-                <label for="team-homeGround" class="control-label">Stadium: </label>
-                <input id="team-homeGround" name="homeGround" type="text" value="<%= homeGround %>"/>
-            </div>
-            <button class="btn js-submit">Save</button>
-        </form>
+        <div class="control-group">
+            <label for="team-name" class="control-label">Name: </label>
+            <input id="team-name" name="name" type="text" value="<%= name %>"/>
+        </div>
+        <div class="control-group">
+            <label for="team-code" class="control-label">Code: </label>
+            <input id="team-code" name="code" type="text" value="<%= code %>" />
+        </div>
+        <div class="control-group">
+            <label for="team-homeGround" class="control-label">Stadium: </label>
+            <input id="team-homeGround" name="homeGround" type="text" value="<%= homeGround %>"/>
+        </div>
+    </script>
+    
+    <script type="text/template" id="form-content"> 
+        <% console.log("form:footer", footer) %>
+        <div id="form-content-region"></div>
+        <% if (footer) { %>
+            <footer>
+                <% if (buttons) { %>
+                    <div class ="button-container">
+                        <% _.each(buttons, function(button) { %>
+                            <button type="<%= button.buttonType %>" data-form-button="<%= button.type %>" class="<%= button.className %>"><%= button.text %></button>
+                        <% }); %>
+                    </div>
+                <% } %>
+            </footer>
+        <% } %>
+    </script>
+    
+    <script type="text/template" id="team-edit-layout">
+        <div id="title-region"></div>
+        <div id="form-region"></div>    
+    </script>
+    
+    <script type="text/template" id="edit-title">
+        <h2>Edit <%= name %></h2>    
     </script>
     
     <script type="text/template" id="team-new"> 
-        <form>
-            <div class="control-group">
-                <label for="team-name" class="control-label">Name: </label>
-                <input name="name" type="text" />
-            </div>
-            <button class="btn js-submit">Save</button>
-            <button class="btn js-cancel">Cancel</button>
-        </form>
+        <div class="control-group">
+            <label for="team-name" class="control-label">Name: </label>
+            <input name="name" type="text" />
+        </div>
     </script>
     
     <script type="text/template" id="about-message">
@@ -132,16 +147,24 @@
     <script src="~/Assets/js/vendor/backbone.marionette.js"></script>
     <script src="~/Assets/js/vendor/spin.js"></script>
     <script src="~/Assets/js/vendor/spin.jquery.js"></script>
+    <script src="~/Assets2/js/ligiadmin/config/jquery.js"></script>
+    <script src="~/Assets2/js/ligiadmin/config/backbone/sync.js"></script>
     <script src="~/Assets2/js/ligiadmin/app.js"></script>
     <script src="~/Assets2/js/ligiadmin/config/marionette/application.js"></script>
     <script src="~/Assets2/js/ligiadmin/config/javascript.js"></script>
     <script src="~/Assets2/js/ligiadmin/entities/_base/model.js"></script>
     <script src="~/Assets2/js/ligiadmin/entities/_base/collections.js"></script>
+    <script src="~/Assets2/js/ligiadmin/entities/_base/_fetch.js"></script>
+    <script src="~/Assets2/js/ligiadmin/entities/abstract/buttons.js"></script>
+    <script src="~/Assets2/js/ligiadmin/entities/team.js"></script>
+    <script src="~/Assets2/js/ligiadmin/controllers/_base.js"></script>
     <script src="~/Assets2/js/ligiadmin/views/_base/view.js"></script>
     <script src="~/Assets2/js/ligiadmin/views/_base/collectionview.js"></script>
     <script src="~/Assets2/js/ligiadmin/views/_base/compositeview.js"></script>
     <script src="~/Assets2/js/ligiadmin/views/_base/itemview.js"></script>
     <script src="~/Assets2/js/ligiadmin/views/_base/layout.js"></script>
+    <script src="~/Assets2/js/ligiadmin/component/form/form_controller.js"></script>
+    <script src="~/Assets2/js/ligiadmin/component/form/form_view.js"></script>
     <script src="~/Assets2/js/ligiadmin/apps/header/header_app.js"></script>
     <script src="~/Assets2/js/ligiadmin/apps/header/list/list_controller.js"></script>
     <script src="~/Assets2/js/ligiadmin/apps/header/list/list_view.js"></script>
@@ -150,7 +173,8 @@
     <script src="~/Assets2/js/ligiadmin/apps/teams/new/new_view.js"></script>
     <script src="~/Assets2/js/ligiadmin/apps/teams/list/list_controller.js"></script>
     <script src="~/Assets2/js/ligiadmin/apps/teams/list/list_view.js"></script>
-    <script src="~/Assets/js/entities/team.js"></script>
+    <script src="~/Assets2/js/ligiadmin/apps/teams/edit/edit_controller.js"></script>
+    <script src="~/Assets2/js/ligiadmin/apps/teams/edit/edit_view.js"></script>
     <script type="text/javascript">
         LigiAdmin.start();
     </script>

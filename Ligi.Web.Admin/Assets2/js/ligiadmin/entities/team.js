@@ -1,5 +1,5 @@
 ﻿LigiAdmin.module('Entities', function (Entities, App, Backbone, Marionette, $, _) {
-    Entities.Team = App.Entities.Model.extend({
+    Entities.Team = Entities.Model.extend({
         urlRoot: "/api/teams",
 
         defaults: {
@@ -11,7 +11,7 @@
 
     //Entities.configureStorage(Entities.Team);
 
-    Entities.TeamCollection = App.Entities.Collection.extend({
+    Entities.TeamCollection = Entities.Collection.extend({
         url: "/api/teams",
         model: Entities.Team,
         comparator: "name"
@@ -36,9 +36,27 @@
             var teams = new Entities.TeamCollection();
             teams.fetch({ reset: true });
             return teams;
+        },
+        getTeam: function (id) {
+            var team = new Entities.Team({ id: id });
+            team.fetch();
+            return team;
+        },
+        newTeam: function () {
+            var team = new Entities.Team();
+            return team;
         }
     };
+    
     App.reqres.setHandler("team:entities", function () {
         return API.getTeams();
+    });
+    
+    App.reqres.setHandler("team:entity", function (id) {
+        return API.getTeam(id);
+    });
+    
+    App.reqres.setHandler("new:team:entity", function () {
+        return API.newTeam();
     });
 });

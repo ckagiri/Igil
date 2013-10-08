@@ -9,12 +9,20 @@
     });
 
     List.Panel = App.Views.ItemView.extend({
-        template: "#team-list-panel"
+        template: "#team-list-panel",
+        triggers: {
+            "click button.js-new-team": "new:team:button:clicked"
+        },
     });
     
     List.Team = App.Views.ItemView.extend({
         tagName: "tr",
-        template: "#team-list-item"
+        template: "#team-list-item",
+        
+        triggers: {
+            "click .js-delete": "team:delete:clicked",
+            "click": "team:clicked"
+        },
     });
 
     var NoTeamsView = App.Views.ItemView.extend({

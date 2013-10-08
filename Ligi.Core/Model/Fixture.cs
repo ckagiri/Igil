@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Ligi.Core.Model
 {
@@ -19,7 +20,9 @@ namespace Ligi.Core.Model
         public DateTime KickOff { get; set; }
         public string Venue { get; set; }
         public MatchStatus MatchStatus { get; set; }
+        [Range(0, 15)]
         public int HomeScore { get; set; }
+        [Range(0, 15)]
         public int AwayScore { get; set; }
         public decimal HomeAsianHandicap { get; set; }
         public decimal AwayAsianHandicap { get; set; }

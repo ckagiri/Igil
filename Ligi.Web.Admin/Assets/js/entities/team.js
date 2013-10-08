@@ -72,18 +72,8 @@
         },
         getTeamEntity: function (id) {
             var team = new Entities.Team({ id: id });
-            var defer = $.Deferred();
-            setTimeout(function() {
-                team.fetch({
-                    success: function (data) {
-                        defer.resolve(data);
-                    },
-                    error: function (response) {
-                        defer.resolve(undefined);
-                    }
-                });
-            }, 0);
-            return defer.promise();
+            team.fetch();
+            return team;
         }
     };
     LigiAdmin.reqres.setHandler("team:entities", function() {
