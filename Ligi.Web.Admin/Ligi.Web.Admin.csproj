@@ -150,8 +150,10 @@
     <Content Include="Assets2\js\ligiadmin\component\form\form_view.js" />
     <Content Include="Assets2\js\ligiadmin\config\backbone\sync.js" />
     <Content Include="Assets2\js\ligiadmin\config\javascript.js" />
+    <Content Include="Assets2\js\ligiadmin\config\jquery.js" />
     <Content Include="Assets2\js\ligiadmin\config\marionette\application.js" />
     <Content Include="Assets2\js\ligiadmin\config\marionette\renderer.js" />
+    <Content Include="Assets2\js\ligiadmin\controllers\_base.js" />
     <Content Include="Assets2\js\ligiadmin\entities\abstract\buttons.js" />
     <Content Include="Assets2\js\ligiadmin\entities\team.js" />
     <Content Include="Assets2\js\ligiadmin\entities\_base\collections.js" />

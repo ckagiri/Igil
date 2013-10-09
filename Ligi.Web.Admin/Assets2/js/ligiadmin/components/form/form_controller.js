@@ -1,5 +1,5 @@
 ﻿LigiAdmin.module('Components.Form', function (Form, App, Backbone, Marionette, $, _) {
-    Form.Controller = Marionette.Controller.extend({
+    Form.Controller = App.Controllers.Base.extend({
         initialize: function (options) {
             var self = this;
             if (options == null) {
@@ -10,7 +10,6 @@
             this.formLayout = this.getFormLayout(options.config);
 
             this.listenTo(this.formLayout, "show", this.formContentRegion);
-            this.listenTo(this.formLayout, "close", this.close);
             this.listenTo(this.formLayout, "form:submit", this.formSubmit);
             this.listenTo(this.formLayout, "form:cancel", this.formCancel);
         },
@@ -41,7 +40,7 @@
         
         formContentRegion: function () {
             this.region = this.formLayout.formContentRegion;
-            this.region.show(this.contentView);
+            this.show(this.contentView);
         },
         
         getFormLayout: function (options) {

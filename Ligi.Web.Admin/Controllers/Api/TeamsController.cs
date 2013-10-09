@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Ligi.Core.DataAccess;
@@ -57,6 +58,7 @@ namespace Ligi.Web.Admin.Controllers.Api
 
         public HttpResponseMessage Put(Team team)
         {
+            Thread.Sleep(3000);
             _teamRepo.Update(team);
             _uow.Commit();
 

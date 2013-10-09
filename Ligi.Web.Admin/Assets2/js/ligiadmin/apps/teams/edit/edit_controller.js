@@ -1,7 +1,10 @@
 ﻿LigiAdmin.module('TeamsApp.Edit', function (Edit, App, Backbone, Marionette, $, _) {
-    Edit.Controller = {
-        edit: function (id, team) {
+    Edit.Controller =  App.Controllers.Base.extend({
+        initialize: function (options) {
             var self = this;
+            var id, team;
+            team = options.team;
+            id = options.id;
             team || (team = App.request("team:entity", id));
             team.on("all", function (e) {
                 console.log(e);
@@ -12,13 +15,12 @@
             });
 
             App.execute("when:fetched", team, function () {
-                self.layout = self.getLayoutView(team);
-                self.layout.on("show", function () {
-                    
+                var layout = self.layout = self.getLayoutView(team);
+                self.listenTo(layout, "show", function () {
                     self.titleRegion(team);
                     self.formRegion(team);
                 });
-                App.mainRegion.show(self.layout);
+                self.show(layout);
             });
         },
         
@@ -30,7 +32,7 @@
         formRegion: function (team) {
             var editView = this.getEditView(team);
             
-            editView.on("form:cancel", function () {
+            this.listenTo(editView, "form:cancel", function () {
                 App.vent.trigger("team:cancelled", team);
             });
             
@@ -50,5 +52,5 @@
         getLayoutView: function (team) {
             return new Edit.Layout({ model: team });
         }
-    };
+    });
 });

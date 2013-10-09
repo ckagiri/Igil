@@ -16,7 +16,7 @@
         $width = this.outerWidth(false);
         $height = this.outerHeight(false);
         if (init) {
-            $("<div>").appendTo("body").addClass(obj.className).attr("data-wrapper", true).css({
+            return $("<div>").appendTo("body").addClass(obj.className).attr("data-wrapper", true).css({
                 width: $width,
                 height: $height,
                 top: $offset.top,
@@ -26,7 +26,7 @@
                 backgroundColor: obj.backgroundColor
             });
         } else {
-            $("[data-wrapper]").remove();
+            return $("[data-wrapper]").remove();
         }
     };
 })($);

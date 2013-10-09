@@ -11,16 +11,21 @@
         list: function () {
             return new TeamsApp.List.Controller();
         },
-        newTeam: function () {
-            return TeamsApp.New.Controller.newTeam();
+        newTeam: function (region) {
+            return new TeamsApp.New.Controller({
+                region: region
+            });
         },
         edit: function (id, team) {
-            TeamsApp.Edit.Controller.edit(id,team);
+            return new TeamsApp.Edit.Controller({
+                id: id,
+                team: team
+            });
         }
     };
 
-    App.reqres.setHandler("new:team:view", function () {
-        return API.newTeam();
+    App.commands.setHandler("new:team", function (region) {
+        API.newTeam(region);
     });
 
     App.vent.on("team:clicked", function (team) {

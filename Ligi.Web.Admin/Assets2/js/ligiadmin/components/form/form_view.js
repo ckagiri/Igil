@@ -106,13 +106,13 @@
         
         syncStart: function(model) {
             if (this.options.config.syncing) {
-               // this.addOpacityWrapper();
+                this.addOpacityWrapper();
             }
         },
         
         syncStop: function(model) {
             if (this.options.config.syncing) {
-                // this.addOpacityWrapper(false);
+                this.addOpacityWrapper(false);
             }
         }
     });

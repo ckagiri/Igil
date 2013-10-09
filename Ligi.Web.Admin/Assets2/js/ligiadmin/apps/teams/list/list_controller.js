@@ -1,17 +1,21 @@
 ﻿LigiAdmin.module('TeamsApp.List', function (List, App, Backbone, Marionette, $, _) {
-    List.Controller = Marionette.Controller.extend({
-        initialize: function() {
+    List.Controller = App.Controllers.Base.extend({
+        initialize: function () {
             var self = this;
-            window.c = self;
             var teams = App.request("team:entities");
             App.execute("when:fetched", teams, function() {
                 self.layout = self.getLayoutView();
+                
                 self.listenTo(self.layout, "show", function() {
                     self.panelRegion();
                     self.teamsRegion(teams);
                 });
-                App.mainRegion.show(self.layout);
+                
+                self.show(self.layout);
             });
+        },
+        onClose: function () {
+            console.info("closing controller");
         },
         panelRegion: function() {
             var self = this;
@@ -22,13 +26,14 @@
             this.layout.panelRegion.show(panelView);
         },
         newRegion: function() {
-            var self = this;
-            var layout = self.layout;
-            var newView = App.request("new:team:view");
-            this.listenTo(newView, "form:cancel", function() {
-                layout.newRegion.close();
-            });
-            layout.newRegion.show(newView);
+            //var self = this;
+            //var layout = self.layout;
+            //var newView = App.request("new:team:view");
+            //this.listenTo(newView, "form:cancel", function() {
+            //    layout.newRegion.close();
+            //});
+            //layout.newRegion.show(newView);
+            App.execute("new:team", this.layout.newRegion);
         },
         teamsRegion: function(teams) {
             var teamsView = this.getTeamsView(teams);

@@ -1,13 +1,22 @@
 ﻿LigiAdmin.module('TeamsApp.New', function (New, App, Backbone, Marionette, $, _) {
-    New.Controller = {
-        newTeam: function () {
-            var team, newView;
+    New.Controller = App.Controllers.Base.extend({
+        initialize: function () {
+            var self = this;
+            var team, newView, formView;
             team = App.request("new:team:entity");
-            
-            // team.on("created",func(){})
+
+            this.listenTo(team, "created", function() {
+                App.vent.trigger("team:created", team);
+            });
             
             newView = this.getNewView(team);
-            return App.request("form:wrapper", newView);
+            formView = App.request("form:wrapper", newView);
+
+            this.listenTo(newView, "form:cancel", function() {
+                self.region.close();
+            });
+
+            this.show(formView);
         },
         
         getNewView: function (team) {
@@ -15,5 +24,5 @@
                 model: team
             });
         }
-    };
+    });
 });

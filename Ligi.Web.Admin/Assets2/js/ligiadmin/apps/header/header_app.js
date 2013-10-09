@@ -3,7 +3,9 @@
     
     var API = {
         list: function () {
-            Header.List.Controller.list();
+            return new Header.List.Controller({
+                region: App.headerRegion
+            });
         }
     };
 
