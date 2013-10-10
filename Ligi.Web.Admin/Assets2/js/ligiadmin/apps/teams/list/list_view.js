@@ -21,6 +21,7 @@
         
         triggers: {
             "click .js-delete": "team:delete:clicked",
+            "click .js-edit": "team:edit:clicked",
             "click": "team:clicked"
         },
     });

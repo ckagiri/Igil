@@ -9,7 +9,7 @@
         }
         _.defaults(obj, {
             className: "",
-            backgroundColor: this.css("backgroundColor") !== "transparent" ? this.css("backgroundColor") : "white",
+            backgroundColor: this.css("backgroundColor") !== "transparent" ? this.css("backgroundColor") : "red",
             zIndex: this.css("zIndex") === "auto" || 0 ? 1000 : Number(this.css("zIndex"))
         });
         $offset = this.offset();

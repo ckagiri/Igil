@@ -27,7 +27,7 @@
         }
     });
     
-    //Entities.configureStorage(Entities.Team);
+    Entities.configureStorage(Entities.Team);
     
     Entities.TeamCollection = Backbone.Collection.extend({
         url: "/api/teams",
@@ -35,7 +35,7 @@
         comparator: "name"
     });
     
-    //Entities.configureStorage(Entities.TeamCollection);
+    Entities.configureStorage(Entities.TeamCollection);
 
     var initializeTeams = function() {
         var teams = new Entities.TeamCollection([

@@ -9,11 +9,10 @@
     
     App.addRegions({
         headerRegion: "#header-region",
-        mainRegion: "#main-region",
-        dialogRegion: Marionette.Region.Dialog.extend({el: "#dialog-region"})
+        mainRegion: "#main-region"
     });
     
-    App.rootRoute = "teams";
+    App.rootRoute = "dashboard";
 
     App.addInitializer(function () {
         App.module("HeaderApp").start();

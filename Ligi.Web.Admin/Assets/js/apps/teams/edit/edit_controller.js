@@ -4,12 +4,12 @@
             var loadingView = new LigiAdmin.Common.Views.Loading();
             LigiAdmin.mainRegion.show(loadingView);
             var fetchingTeam = LigiAdmin.request("team:entity", id);
-            $.when(fetchingTeam).done(function(team) {
+            $.when(fetchingTeam).done(function (team) {
                 var view;
                 if(team !== undefined) {
                     view = new Edit.Team({
                         model: team,
-                        generateTitle: true
+                        generateTitle: false
                     });
                     view.on("form:submit", function(data) {
                         if (team.save(data)) {

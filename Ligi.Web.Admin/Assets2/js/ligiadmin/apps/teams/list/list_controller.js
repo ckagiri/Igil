@@ -40,6 +40,23 @@
             this.listenTo(teamsView, "childview:team:clicked", function(childview, args) {
                 App.vent.trigger("team:clicked", args.model);
             });
+            
+            this.listenTo(teamsView, "childview:team:edit:clicked", function (childview, args) {
+                //var model = args.model;
+                //var view = new LigiAdmin.TeamsApp.Edit.Team({
+                //    model: model
+                //});
+                //view.on("form:submit", function(data) {
+                //    if (model.save(data)) {
+                //        childview.render();
+                //        view.trigger("dialog:close");
+                //        //childview.flash("success");
+                //    }
+                //});
+                //App.dialogRegion.show(view);
+                App.execute("edit:team:dialog", args.model);
+            });
+            
             this.listenTo(teamsView, "childview:team:delete:clicked", function(childview, args) {
                 var model = args.model;
                 if (confirm("Are you sure you want to delete " + model.get('name') + " ?")) {

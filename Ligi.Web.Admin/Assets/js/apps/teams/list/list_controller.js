@@ -77,7 +77,8 @@
                 });
                 teamsListView.on("itemview:team:edit", function (childView, model) {
                     var view = new LigiAdmin.TeamsApp.Edit.Team({
-                        model: model
+                        model: model,
+                        generateTitle: false
                     });
 
                     view.on("form:submit", function(data) {

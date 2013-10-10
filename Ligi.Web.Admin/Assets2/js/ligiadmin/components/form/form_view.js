@@ -104,7 +104,7 @@
             //return el.after(sm).closest(".row").addClass("error");
         },
         
-        syncStart: function(model) {
+        syncStart: function (model) {
             if (this.options.config.syncing) {
                 this.addOpacityWrapper();
             }

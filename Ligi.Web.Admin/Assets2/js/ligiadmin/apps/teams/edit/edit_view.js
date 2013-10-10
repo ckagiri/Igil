@@ -20,12 +20,15 @@
         
         form: {
             footer: false,
-            focusFirstInput: true
+            focusFirstInput: true,
             //buttons: {
             //    primary: "Update",
             //    cancel: "Cancel",
             //    placement: "left"
-            //}
+            //},
+            dialog: {
+                title: "Edit Team"
+            }
         },
         
         //onFormSubmit: function (data) {

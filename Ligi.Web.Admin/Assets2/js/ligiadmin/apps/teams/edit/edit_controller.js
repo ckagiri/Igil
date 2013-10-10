@@ -11,13 +11,13 @@
             });
 
             team.on("updated", function() {
-                App.vent.trigger("team:updated", team);
+               // App.vent.trigger("team:updated", team);
             });
 
             App.execute("when:fetched", team, function () {
                 var layout = self.layout = self.getLayoutView(team);
                 self.listenTo(layout, "show", function () {
-                    self.titleRegion(team);
+                   // self.titleRegion(team);
                     self.formRegion(team);
                 });
                 self.show(layout);
@@ -33,6 +33,7 @@
             var editView = this.getEditView(team);
             
             this.listenTo(editView, "form:cancel", function () {
+                debugger;
                 App.vent.trigger("team:cancelled", team);
             });
             
