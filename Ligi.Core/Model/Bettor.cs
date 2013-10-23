@@ -95,16 +95,17 @@ namespace Ligi.Core.Model
         public void UpdateSeasonAccount(Guid seasonId, Guid bookieId, List<BetTransaction> betTransactions)
         {
             var seasonAccount = _seasonAccounts.First(n => n.SeasonId == seasonId);
-            var monthAccounts = new List<MonthAccount>();
+            List<MonthAccount> monthAccounts;
+            if (!_monthAccounts.TryGetValue(seasonId, out monthAccounts))
+            {
+                monthAccounts = new List<MonthAccount>();
+            }
+            var tempMonthAccounts = new List<MonthAccount>();
             foreach (var betTx in betTransactions)
             {
                 var bet = betTx.Bet;
-                List<MonthAccount> seasonMonthAccounts;
-                if (!_monthAccounts.TryGetValue(seasonId, out seasonMonthAccounts))
-                {
-                    seasonMonthAccounts = new List<MonthAccount>();
-                }
-                var monthAccount = seasonMonthAccounts.FirstOrDefault(n => n.SeasonId == seasonId && n.Month == bet.MatchDay.Month);
+                
+                var monthAccount = monthAccounts.FirstOrDefault(n => n.SeasonId == seasonId && n.Month == bet.MatchDay.Month);
                 if (monthAccount == null)
                 {
                     monthAccount = new MonthAccount
@@ -117,9 +118,13 @@ namespace Ligi.Core.Model
                 }
                 UpdateAccount(seasonAccount, bet, betTx.TxType);
                 UpdateAccount(monthAccount, bet, betTx.TxType);
-                monthAccounts.Add(monthAccount);
+                if(!tempMonthAccounts.Exists(n => n.Id == monthAccount.Id))
+                {
+                    tempMonthAccounts.Add(monthAccount);
+                }
+
             }
-            foreach (var monthAccount in monthAccounts)
+            foreach (var monthAccount in tempMonthAccounts)
             {
                 monthAccount.UserName = _userName;
                 Update(new MonthAccountUpdated

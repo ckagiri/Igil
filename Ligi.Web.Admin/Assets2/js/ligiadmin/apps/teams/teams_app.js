@@ -16,11 +16,10 @@
                 region: region
             });
         },
-        edit: function (id, team, region) {
+        edit: function (id, team) {
             return new TeamsApp.Edit.Controller({
                 id: id,
-                team: team,
-                region: region
+                team: team
             });
         }
     };
@@ -32,10 +31,6 @@
     App.vent.on("team:clicked", function (team) {
         App.navigate("teams/" + team.id + "/edit");
         API.edit(team.id, team);
-    });
-    
-    App.commands.setHandler("edit:team:dialog", function (team) {
-        API.edit(team.id, team, App.dialogRegion);
     });
     
     App.vent.on("team:cancelled team:updated", function (team) {

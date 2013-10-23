@@ -53,7 +53,7 @@ namespace Ligi.Core.Model
             foreach (var betItem in betItems)
             {
                 var existing = _bets.FirstOrDefault(n => n.FixtureId == betItem.FixtureId && 
-                    n.BetType == betItem.BetType && n.Handicap == betItem.Handicap);
+                    n.BetType == betItem.BetType && n.BetPick == betItem.BetPick && n.Handicap == betItem.Handicap);
                 if (existing == null)
                 {
                     if (betItem.Wager > Credit + Balance)

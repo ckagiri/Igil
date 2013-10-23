@@ -7,7 +7,8 @@
                 init = true;
             }
             return this.$el.toggleWrapper({
-                className: "opacity"
+                className: "opacity",
+                backgroundColor: "white"
             }, init);
         },
         

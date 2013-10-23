@@ -6,7 +6,7 @@
         filtered.filterFunction = options.filterFunction;
 
         var applyFilter = function (filterCriterion, filterStrategy, collection) {
-            var collection = collection || original;
+            collection = collection || original;
             var criterion;
             if (filterStrategy == 'filter') {
                 criterion = filterCriterion.trim();

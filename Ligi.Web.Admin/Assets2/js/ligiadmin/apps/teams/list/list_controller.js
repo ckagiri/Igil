@@ -1,11 +1,13 @@
 ﻿LigiAdmin.module('TeamsApp.List', function (List, App, Backbone, Marionette, $, _) {
     List.Controller = App.Controllers.Base.extend({
         initialize: function () {
-            var self = this;
-            var teams = App.request("team:entities");
-            App.execute("when:fetched", teams, function() {
+            var self = this,
+                teams = App.request("team:entities"),
+                leagues = App.request("league:entities"),
+                seasons = App.request("season:entities");
+            App.execute("when:fetched", [teams, leagues, seasons], function () {
+                var x = leagues, y = seasons;
                 self.layout = self.getLayoutView();
-                
                 self.listenTo(self.layout, "show", function() {
                     self.panelRegion();
                     self.teamsRegion(teams);
@@ -42,19 +44,7 @@
             });
             
             this.listenTo(teamsView, "childview:team:edit:clicked", function (childview, args) {
-                //var model = args.model;
-                //var view = new LigiAdmin.TeamsApp.Edit.Team({
-                //    model: model
-                //});
-                //view.on("form:submit", function(data) {
-                //    if (model.save(data)) {
-                //        childview.render();
-                //        view.trigger("dialog:close");
-                //        //childview.flash("success");
-                //    }
-                //});
-                //App.dialogRegion.show(view);
-                App.execute("edit:team:dialog", args.model);
+                App.vent.trigger("team:clicked", args.model);
             });
             
             this.listenTo(teamsView, "childview:team:delete:clicked", function(childview, args) {

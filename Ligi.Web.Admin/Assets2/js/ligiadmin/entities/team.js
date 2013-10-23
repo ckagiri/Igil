@@ -30,11 +30,13 @@
         });
         return teams.models;
     };
-
+    var teams;
     var API = {
         getTeams: function () {
-            var teams = new Entities.TeamCollection();
-            teams.fetch({ reset: true });
+            if (!teams) {
+                teams = new Entities.TeamCollection();
+                teams.fetch({ reset: true });
+            }
             return teams;
         },
         getTeam: function (id) {
@@ -45,6 +47,12 @@
         newTeam: function () {
             var team = new Entities.Team();
             return team;
+        },
+        getTeamsBySeason: function(seasonId) {
+            var teamIds, models;
+            teamIds = App.request("team:ids:seasonId", seasonId);
+            models = teams.filter(function (t) { return _.contains(teamIds, t.get('id')); });
+            return models;
         }
     };
     
